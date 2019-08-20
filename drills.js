@@ -10,7 +10,7 @@ function urlify(string) {
 }
 
 function filterLessFive(array) {
-  const output = []
+  const output = [];
   for (let i = 0; i < array.length; i++) {
     if (array[i] >= 5)
       output.push(array[i]);
@@ -32,8 +32,62 @@ function largestSum(array) {
   return output;
 }
 
+function mergeArrays(first, second) {
+  const output = [];
+
+  let i = 0;
+  let j = 0;
+
+  while (output.length < first.length + second.length) {
+    if (j === second.length || first[i] < second[j]) {
+      output.push(first[i]);
+      i = i + 1
+    } else {
+      output.push(second[j]);
+      j = j + 1
+    }
+  }
+  return output;
+}
+
+function removeCharacters(string, chars) {
+  let output = '';
+
+  for (let i = 0; i < string.length; i++) {
+    for (let j = 0; j < chars.length; j++) {
+      if (string[i] !== chars[j])
+        output = output + string[i]
+    }
+  }
+  return output;
+}
+
+function products(array) {
+  const output = [];
+
+  for(let i = 0; i < array.length; i++) {
+    let n = array[i]
+    for(let j = 0; j < array.length; j++) {
+      if (i !== j) {
+        n = n * i
+      }
+    }
+    output.push(n)
+  }
+  return output;
+}
+
+function offSwitch(array) {}
+
+function rotateString(str1, str2) {}
+
 module.exports = {
   urlify,
   filterLessFive,
   largestSum,
+  mergeArrays,
+  removeCharacters,
+  products,
+  offSwitch,
+  rotateString
 }
