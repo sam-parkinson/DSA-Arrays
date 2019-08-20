@@ -59,8 +59,20 @@ class Array {
     if (index < 0 || index >= this.length) {
       throw new Error('Index error');
     }
-    memory.copy(this.ptr + index, this.ptr + index + 1, this.length - index - 1);
+    Memory.copy(this.ptr + index, this.ptr + index + 1, this.length - index - 1);
     this.length--;
   }
 }
+
 Array.SIZE_RATIO = 3;
+
+function main() {
+  Array.SIZE_RATIO = 3;
+  let arr = new Array();
+  arr.push(3);
+  console.log(arr);
+}
+
+module.exports = { 
+  main,
+}
