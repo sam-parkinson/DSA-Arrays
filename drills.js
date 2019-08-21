@@ -54,22 +54,25 @@ function removeCharacters(string, chars) {
   let output = '';
 
   for (let i = 0; i < string.length; i++) {
+    let flag = false
     for (let j = 0; j < chars.length; j++) {
-      if (string[i] !== chars[j])
-        output = output + string[i]
+      if (string.charAt(i) === chars.charAt(j))
+        flag = true
     }
+    if (flag === false)
+      output = output + string[i]
   }
   return output;
 }
 
 function products(array) {
   const output = [];
-
+  // this isn't working for some reason
   for(let i = 0; i < array.length; i++) {
     let n = array[i]
     for(let j = 0; j < array.length; j++) {
       if (i !== j) {
-        n = n * i
+        n = n * array[j]
       }
     }
     output.push(n)
@@ -77,9 +80,45 @@ function products(array) {
   return output;
 }
 
-function offSwitch(array) {}
+function offSwitch(array) {
+  let output = [];
+  for (let i = 0; i < array.length; i++) {
+    output.push([]);
+  }
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].length; j++) {
+      if (array[i][j] === 0) {
+        for (let k = 0; k < array.length; k++) {
+          output[k][j] = 0;
+        }
+        for (let l = 0; l < array[i].length; l++) {
+          output[i][l] = 0;
+        }
+      }
+      else if (output[i][j] !== 0) {
+        output[i][j] = 1;
+      }
+    }
+  }
+  return output;
+}
 
-function rotateString(str1, str2) {}
+function rotateString(str1, str2) {
+  for (let i = 0; i < str2.length; i++) {
+    let rotated = '';
+    for(let j = 0; j < str2.length; j++) {
+      if (j + i < str2.length) {
+        rotated = rotated + str2[j + i]
+      } else {
+        rotated = rotated + str2[(j + i) - str2.length]
+      }
+    }
+    if (str1 === rotated) {
+      return true
+    }
+  }
+  return false
+}
 
 module.exports = {
   urlify,
