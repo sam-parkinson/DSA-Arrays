@@ -1,3 +1,5 @@
+const Array = require('./array.js');
+
 function urlify(string) {
   let output = '';
   for (let i = 0; i < string.length; i++) {
@@ -120,6 +122,14 @@ function rotateString(str1, str2) {
   return false
 }
 
+function main() {
+  Array.SIZE_RATIO = 3;
+  let arr = new Array();
+  arr.push(3);
+  console.log(arr);
+  return arr;
+}
+
 module.exports = {
   urlify,
   filterLessFive,
@@ -128,5 +138,6 @@ module.exports = {
   removeCharacters,
   products,
   offSwitch,
-  rotateString
+  rotateString,
+  main
 }
